@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Middleware\Autentication;
+use App\Http\Controllers\RegistrarController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -28,3 +29,6 @@ Route::middleware(Autentication::class)->group(function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'logar'])->name('logar');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
+
+Route::get('/registro', [RegistrarController::class, 'index'])->name('users.create');
+Route::post('/registro', [RegistrarController::class, 'store'])->name('users.store');
